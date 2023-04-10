@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 
 export const Form = () => {
     const { store, actions } = useContext(Context);
-    const {contacts, setContacts } = useState(contacts);
+    const {contacts, setContacts } = useState([]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,10 +15,11 @@ export const Form = () => {
             newId = contacts[x].id;
         }
        };
+       
        let newContact = {id: newId + 1, name: event.target.value, email: event.target.value, phone: event.target.value, address: event.target.value}
        setContacts([...contacts, newContact])
         
-      };
+      }; 
     
    
 
@@ -26,7 +27,7 @@ export const Form = () => {
     <div className="container"> 
     <h1>Add a new Contact</h1>
 
-<form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
 
   <div className="mb-3">
     <label for="name" className="form-label">Full Name</label>
