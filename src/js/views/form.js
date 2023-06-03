@@ -5,12 +5,10 @@ import { Context } from "../store/appContext";
 
 export const Form = () => {
     const { store, actions } = useContext(Context);
-   /* const {contacts, setContacts } = useState([]); */
     const [newContact, setNewContact] = useState ({full_name: "",  email: "", address: "", phone: ""})
     
-
-    const submitContact = () => {
-      console.log("Helloooooo")
+    const submitContact = (event) => {
+        event.preventDefault();
        /*let newId = 0;
        for (let x = 0; x < store.contacts.length; x++){
         if(store.contacts[x].id > newId){
@@ -18,16 +16,9 @@ export const Form = () => {
         }
        }; */
        actions.handleContact(newContact)
-      /* console.log(newContact)*/
-      
-      /* actions.addAContact();*/
-        
+       console.log(store.newContact)
+    
       }; 
-    const test = () => {
-      console.log(store.newContact)
-    }
-
-   
 
   return (
     <div className="container"> 
@@ -57,7 +48,6 @@ export const Form = () => {
   </div>
  
   <button onClick={submitContact} className="btn btn-primary" >Submit</button>
-  <button onClick={test} className="btn btn-primary" >Test</button>
   <Link to="/">go back to contacts</Link>
 
 </form>

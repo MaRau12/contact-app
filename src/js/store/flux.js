@@ -2,10 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			contacts : [
-				{id:1 ,name: "Fred", phone: 123}, 
-				{id:2 ,name: "James", phone:345}, 
-				{id:3 ,name: "Hanna", phone:456}, 
-				{id:4 ,name: "Lisa", phone:567},
+				
                 
 			],
 			newContact: [],
@@ -21,17 +18,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			addAContact: async() => {
-			const response = await fetch(assets.breatheco.de/apis/fake/contact/{
+			const response = await fetch("assets.breatheco.de/apis/fake/contact/",{
 			methods: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(newContact)
 	     	});
+			 setStore({contacts: data.contacts})
 			},
 			
 			getAllContacts: async () => {
+				console.log("the fetch")
 				const response = await fetch("assets.breatheco.de/apis/fake/contact/agenda/agenda_M")
-				const data = await response.json();
-				setStore({contacts: data.contacts})
+				console.log("response", response);
+				const data = await response.json().
+				console.log(data);
+				console.log("data should be here");
+				if (response.ok){
+					setStore({contacts: data})
+					console.log(data)
+				};
+				console.log(store.contacts)
+				
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
