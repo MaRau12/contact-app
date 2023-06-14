@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 
 export const Form = () => {
     const { store, actions } = useContext(Context);
-    const [newContact, setNewContact] = useState ({full_name: "",  email: "", address: "", phone: ""})
+    const [newContact, setNewContact] = useState ({full_name: "",  email: "", address: "", phone: "", agenda_slug: "agenda_M"})
     
     const submitContact = (event) => {
         event.preventDefault();
@@ -17,7 +17,7 @@ export const Form = () => {
        }; */
        actions.handleContact(newContact)
        console.log(store.newContact)
-    
+       actions.addAContact(newContact)
       }; 
 
   return (
