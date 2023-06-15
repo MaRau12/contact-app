@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 
 export const Card = ({item}) => {
 
+  const [delete, setDelete] = useState()
+const handleDelete =(id) => {
+setDelete()
+}
    
     return (         
                    <div className="row-cols-2">
@@ -17,7 +21,7 @@ export const Card = ({item}) => {
                           </Link>
                           
                           <Link >
-				                  	<button className="btn btn-primary">Delete</button>
+				                  	<button className="btn btn-primary" onClick={handleDelete}>Delete</button>
                           </Link>
                          
                       </div>

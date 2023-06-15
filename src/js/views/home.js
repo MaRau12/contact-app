@@ -18,7 +18,7 @@ return(
 	<div className="row g-3 row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
 		{store.contacts.map((item, index)=>{
 			return(
-                    <Card key={item.id} item={item}/>
+                    <Card key={item.id} item={item} name={item.full_name}/>
 
 			)
 		

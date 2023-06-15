@@ -13,22 +13,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
             handleContact: (contactToAdd)=>{
 				const store = getStore();
-				setStore({newContact: [...store.newContact, contactToAdd]})
-				console.log(store.newContact)
+				setStore({contacts: [...store.contacts, contactToAdd]})
+				const updatedStore = getStore();
+                console.log(updatedStore.contacts);
 			},
 
 			addAContact: async(newestContact) => {
-			const response = await fetch("assets.breatheco.de/apis/fake/contact/",{
-			methods: "POST",
+			const response = await fetch("https://assets.breatheco.de/apis/fake/contact/",{
+			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(newestContact)
 	     	});
-			
 			},
 			
 			getAllContacts: async () => {
+				const store = getStore();
 				console.log("the fetch")
-				const response = await fetch("assets.breatheco.de/apis/fake/contact/agenda/agenda_M")
+				const response = await fetch("https://assets.breatheco.de/apis/fake/contact/agenda/agenda_M")
 				console.log("response", response);
 				
 				console.log("XXXXXXXXXXX")
@@ -43,11 +44,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data)
 				};
 				console.log(store.contacts)
-				
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
 			},
+
+		    deleteContact: async (contactToDelete) =>{
+				const store = getStore();
+				console.log("delete")
+				const response = await fetch("https://assets.breatheco.de/apis/fake/contact/"${id},{
+			    method: "DELETE",
+	     	});
+
+			}
 		
 		}
 	};

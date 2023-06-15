@@ -9,15 +9,11 @@ export const Form = () => {
     
     const submitContact = (event) => {
         event.preventDefault();
-       /*let newId = 0;
-       for (let x = 0; x < store.contacts.length; x++){
-        if(store.contacts[x].id > newId){
-            newId = newContact[x].id;
-        }
-       }; */
-       actions.handleContact(newContact)
-       console.log(store.newContact)
-       actions.addAContact(newContact)
+        actions.addAContact(newContact).then(() => {
+            actions.handleContact(newContact);
+            console.log(store.contacts);
+            setNewContact({full_name: "",  email: "", address: "", phone: "", agenda_slug: "agenda_M"});
+        });
       }; 
 
   return (
